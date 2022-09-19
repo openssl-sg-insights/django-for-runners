@@ -90,3 +90,14 @@ class ProjectSettingsTestCase(TestCase):
 
 def test_check_editor_config():
     check_editor_config(package_root=PACKAGE_ROOT)
+
+
+def test_safety():
+    safety_bin = shutil.which('safety')
+    retcode = subprocess.check_call(
+        [safety_bin, 'check'],
+        env=os.environ,
+        stderr=subprocess.STDOUT,
+        cwd=str(PACKAGE_ROOT),
+    )
+    assert retcode == 0

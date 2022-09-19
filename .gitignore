@@ -3,6 +3,7 @@
 !.editorconfig
 !.flake8
 !.gitignore
+!.safety-policy.yml
 
 # for django-dbbackup
 /backups/

@@ -43,6 +43,9 @@ pytest: check-poetry  ## Run pytest
 	poetry run django-admin --version
 	poetry run pytest
 
+safety:  ## Run https://github.com/pyupio/safety
+	poetry run safety check --full-report
+
 renew-fixtures: ## Renew all fixture files
 	./manage.sh renew_fixtures
 
