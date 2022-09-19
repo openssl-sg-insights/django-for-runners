@@ -16,17 +16,13 @@ check-poetry:
 	fi
 
 install-poetry:  ## install or update poetry
-	pip3 install -U pip
-	pip3 install -U poetry
+	curl -sSL https://install.python-poetry.org | python3 -
 
 install: check-poetry  ## install project via poetry
 	poetry install
 
-update: install-poetry ## update the sources and installation
-	git fetch --all
-	git pull origin main
-	poetry run pip install -U pip
-	poetry update
+update: check-poetry  ## update the sources and installation and generate "conf/requirements.txt"
+	poetry update -v
 
 lint: ## Run code formatters and linter
 	poetry run darker --diff --check
